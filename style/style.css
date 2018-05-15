@@ -1,0 +1,78 @@
+.col-sm {
+	display: inherit;
+	margin: 50px;
+}
+
+.list-group-item:hover {
+	background-color: orange;
+	cursor: pointer;
+}
+
+.list-group-item {
+	width: 250px;
+}
+
+:target {
+    color: red;
+}
+
+.site-section{
+    margin: 0px 200px 40px 4px;
+    color: #2985e8;
+}
+
+
+#container{
+    text-align: justify;
+    margin-left: 60px;
+    text-align: center;
+}
+
+#main{
+    display: inline-block;
+}
+
+
+#sidebar2{
+    display: inline-block;
+}
+.progress {
+	width: 80px;
+}
+.totalsales {
+margin-left: 250px;
+color: magenta;
+}
+
+.pie {
+	padding-left: 180px;
+}
+.sales {
+padding-left: 300px;
+color: orange;
+}
+
+
+li {
+ display:inline;
+    padding: 0 250px 60px 80px;
+    color: red;
+}
+
+
+.list-group-item:selected {
+    background-color: pink;
+    color: red;
+}
+.Welcome {
+    margin-left: 50px;
+}
+div.container {
+    background-color: #ebf3f5;
+    width: 900px;
+}
+
+ svg {
+    width: 550px;
+    padding-left: 80px;
+ }
