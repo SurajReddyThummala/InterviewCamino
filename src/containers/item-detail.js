@@ -5,13 +5,123 @@ import {PieChart, Pie, Sector, Cell,AreaChart, Area, XAxis, YAxis, CartesianGrid
 import DonutChart from "react-svg-donut-chart"
 import * as V from 'victory';
 import {VictoryPie,VictoryLabel } from 'victory-pie';
+import ReactHighcharts from 'react-highcharts';
+import HighchartsMore from 'highcharts-more';
+import SolidGauge from 'highcharts-solid-gauge';
 
  class ItemDetail extends Component{
+  
+
     render(){
       if(!this.props.item){
       return <div className ="Welcome"> Welcome to Camino Financial</div>
     }
+    HighchartsMore(ReactHighcharts.Highcharts);
+    SolidGauge(ReactHighcharts.Highcharts);
+    
+    window.Highcharts = ReactHighcharts.Highcharts;
+
     const a = this.props.item.CompletedOrders/this.props.item.orders*100;
+
+const multiChartsConfig = (value, open, click, placement, str1, str2,str3) => {
+  return {
+    chart: {
+        type: 'solidgauge',
+        height: 360,
+        width: 560,
+        marginTop: 10,
+        marginBottom: 0,
+        backgroundColor: '#ebf3f5',
+        style: { margin: 'auto' },
+    },
+    title: null,
+    pane: {
+        startAngle: 0,
+        endAngle: 360,
+        background: [
+          {
+            backgroundColor: '#ebf3f5',
+            outerRadius: '110%',
+            innerRadius: '100%',
+            borderWidth: 0
+          },{
+            backgroundColor: '#ebf3f5',
+            outerRadius: '93%',
+            innerRadius: '83%',
+            borderWidth: 0
+          },{
+            backgroundColor: '#ebf3f5',
+            outerRadius: '76%',
+            innerRadius: '66%',
+            borderWidth: 0
+          }
+        ]
+    },
+    tooltip:     {
+        enabled: false
+    },
+    // the value axis
+    yAxis: {
+      min: 0,
+      max: 100,
+      lineWidth: 0,
+      tickPositions: []
+    },
+    plotOptions: {
+      solidgauge: {
+        dataLabels: {
+          enabled: true,
+          borderWidth: 0,
+          y: -30,
+          useHTML: true,
+          formatter: () => {
+            return (`
+              <div style="text-align: center;font-size:15px;color: #777777;">
+              <div style="color: #009fc5;font-size: 17px;"></div><div>${str1}</div><div>${str2}</div><div>${str3}</div>
+              </div>
+            `);
+          }
+        },
+        linecap: 'round',
+        rounded: true,
+        stickyTracking: false
+      }
+    },
+    credits:     {
+        enabled: false
+    },
+    series: [
+      {
+        name: 'open',
+        rounded: true,
+        data: [{
+          color: '#009fc5',
+          radius: '110%',
+          innerRadius: '100%',
+          y: Math.round((open / value) * 100) 
+        }]
+      },
+      {
+        name: 'click',
+        data: [{
+          color: 'green',
+          radius: '93%',
+          innerRadius: '83%',
+          y: Math.round((click / value) * 100) 
+        }]
+      },
+      {
+        name: 'placement',
+        data: [{
+          color: 'red',
+          radius: '76%',
+          innerRadius: '66%',
+          y: Math.round((placement / value) * 100) 
+        }]
+      }
+    ]
+  };
+}
  
 const dataPie = [
 
@@ -56,7 +166,8 @@ const dataPie = [
         <Area type='monotone' dataKey='Bracelet' stackId="1" stroke='#ffc658' fill='#ffc658' />
       </AreaChart>
 
-<DonutChart data={dataPie} className = "donut"  spacing = {1} />
+  <ReactHighcharts config={
+      multiChartsConfig(480,380,250,190,'Hoodie','FittedCap','Bracelet') }></ReactHighcharts>
 
      <div className = "sales"> Sales 
      <p>{this.props.item.sales}</p>
