@@ -1,26 +1,15 @@
-# ReduxSimpleStarter
+Installation:
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+step1 : npm install -> will install npm modules step 2: navigate to the folder then -> npm run start
 
-### Getting Started
+Testing with mocha: 
 
-There are two methods for getting started with this repo.
+step1: navigate to the folder then -> npm run test:watch
 
-#### Familiar with Git?
-Checkout this repo, install dependencies, then start the gulp process with the following:
 
-```
-> git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
-> cd ReduxSimpleStarter
-> npm install
-> npm start
-```
 
-#### Not Familiar with Git?
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
 
-```
-> npm install
-> npm start
-```
-"# InterviewCamino" 
+
+Testing with mocha:
+
+
